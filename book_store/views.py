@@ -53,12 +53,6 @@ def user_login(request):    #Method not incapsulated in model because of form.sa
             next = '/book_store/'
         return render(request, 'book_store/login.html', {'next' : next})
 
-class UserRegisterView(generic.CreateView):
-    template_name = 'book_store/register.html'
-    model = User
-    fields = ['username', 'email', 'password']
-    success_url = '/book_store/'
-
 class IndexView(generic.ListView):
     template_name = 'book_store/index.html'
 

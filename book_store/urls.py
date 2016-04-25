@@ -3,12 +3,10 @@ from .views import *
 
 urlpatterns = patterns('',
 
-
         url(r'^$', IndexView.as_view(), name='index'),
         url(r'^add-book/$', BookCreateView.as_view(), name='book_create'),
         url(r'^edit-book/(?P<pk>\d+)/$', BookUpdateView.as_view(), name='book_edit'),
 
-        url(r'^register/$', UserRegisterView.as_view(), name='register'),
         url(r'^login/$', user_login, name='login'),
         url(r'^logout/$', user_logout, name='logout'),
 
