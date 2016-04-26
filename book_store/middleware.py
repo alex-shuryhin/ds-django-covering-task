@@ -8,7 +8,7 @@ class LoggingBooksManipulationsMiddleware(StreamHandler):
     def emit(self, record):
         msg = record.msg
         if (msg.find('book_store_book') != -1 and
-                msg.find('INSERT') != -1 or msg.find('UPDATE') != -1 or msg.find('DELETE') != -1):
+                (msg.find('INSERT') != -1 or msg.find('UPDATE') != -1 or msg.find('DELETE') != -1)):
             book_manipulation.send(sender=self.__class__, msg=msg)
 
 
