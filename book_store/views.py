@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 from .models import Book, RequestRecord
@@ -17,11 +18,13 @@ class BookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Book
     form_class = BookForm
     template_name_suffix = '_update'
+    success_url = reverse('index')
 
 class BookCreateView(LoginRequiredMixin, generic.CreateView):
     model = Book
     form_class = BookForm
     template_name_suffix = '_create'
+    success_url = reverse('index')
 
 def user_test(request):
     username = request.user.username
