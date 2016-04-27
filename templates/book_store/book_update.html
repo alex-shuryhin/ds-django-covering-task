@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
+{% load bootstrap3 %}
 {% block title %}Edit the book{% endblock title %}
+
+
 {% block body %}
     <h1>Edit the book</h1>
 
-    <form action="" method="post">
+    <form action="" method="post" style="width: 350px;">
         {% csrf_token %}
 
         {% for field in form %}
-            <p>{{ field.errors }}
-            {{ field.label_tag }} {{ field }} </p>
+            {% bootstrap_field field addon_before=field.label show_label=False %}
         {% endfor %}
 
-        <input type="submit" value="Edit">
-    </form>
+        {% bootstrap_button button_type='submit' content='save' %}
+
+    </form><br>
+
 {% endblock body %}

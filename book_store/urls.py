@@ -12,4 +12,5 @@ urlpatterns = patterns('',
 
         url(r'^user/$', user_test, name='user_test'),
         url(r'^requests/$',RequestsView.as_view(), name='requests'),
+        url(r'^logs/$', logs, name='logs'),
 )

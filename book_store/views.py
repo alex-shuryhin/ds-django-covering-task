@@ -9,10 +9,15 @@ from .models import Book, RequestRecord
 from .forms import BookForm
 from .viewmixins import LoginRequiredMixin
 
+def logs(request):
+    with open("book_store/book_manipulation.log") as f:
+        lines = f.readlines()
+    return render(request, 'book_store/logs.html', {'lines': lines})
+
 class RequestsView(generic.ListView):
     template_name = 'book_store/requests.html'
     context_object_name = 'request_list'
-    queryset = RequestRecord.get_last_10_items()
+    queryset = RequestRecord.requests.last_10()
 
 class BookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Book

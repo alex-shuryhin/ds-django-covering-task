@@ -1,13 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Index Page{% endblock title %}
-{% block body %}
-
 {% load book_store_extras %}
+{% block title %}Index Page{% endblock title %}
 
-{% if user %}
-    <h3>Hello, {{ user }}</h3>
-{% endif %}
-
+{% block body %}
 {% if book_list %}
     <ol>
     {% for book in book_list %}

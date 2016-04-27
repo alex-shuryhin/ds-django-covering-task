@@ -15,15 +15,17 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+class RequestsManager(models.Manager):
+
+    def last_10(self):
+        return RequestRecord.requests.order_by('-id')[:10]
+
 
 class RequestRecord(models.Model):
     path = models.URLField()
     time = models.DateTimeField(default=datetime.now)
 
-    @classmethod
-    def get_last_10_items(cls):
-        return cls.objects.order_by('-id')[:10]
-
     def __str__(self):
         return self.time.strftime('[%d/%b/%Y %H:%M:%S] - ') + self.path
 
+    requests = RequestsManager()
