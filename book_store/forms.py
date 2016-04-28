@@ -9,7 +9,7 @@ class BookForm(forms.ModelForm):
 
     class Meta():
         model = Book
-        fields = ['title', 'author', 'info', 'ISBN', 'publish_date', 'price']
+        fields = ['title', 'author', 'info', 'ISBN', 'publish_date', 'price', 'image']
         widgets = {'publish_date': SelectDateWidget(years = tuple([i for i in range(1970, 2021)])),
                    'info': Textarea(),
         }

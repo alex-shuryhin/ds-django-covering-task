@@ -11,7 +11,7 @@ from .viewmixins import LoginRequiredMixin
 
 def logs(request):
     with open("book_store/book_manipulation.log") as f:
-        lines = f.readlines()
+        lines = reversed(f.readlines())
     return render(request, 'book_store/logs.html', {'lines': lines})
 
 class RequestsView(generic.ListView):

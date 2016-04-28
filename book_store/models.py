@@ -8,6 +8,7 @@ class Book(models.Model):
     ISBN = models.CharField(max_length=20) #primary key?
     publish_date = models.DateField(default=datetime.now)
     price = models.DecimalField(decimal_places=2, max_digits=5)
+    image = models.ImageField(upload_to='book_store/uploads')
 
     app_label = "book_store"
     model_name = "book"
