@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from .models import Book, RequestRecord
 
 admin.site.register(Book)

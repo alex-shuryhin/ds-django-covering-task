@@ -9,15 +9,18 @@ from .models import Book, RequestRecord
 from .forms import BookForm
 from .viewmixins import LoginRequiredMixin
 
+
 def logs(request):
     with open("book_store/book_manipulation.log") as f:
         lines = reversed(f.readlines())
     return render(request, 'book_store/logs.html', {'lines': lines})
 
+
 class RequestsView(generic.ListView):
     template_name = 'book_store/requests.html'
     context_object_name = 'request_list'
     queryset = RequestRecord.requests.last_10()
+
 
 class BookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Book
@@ -25,11 +28,13 @@ class BookUpdateView(LoginRequiredMixin, generic.UpdateView):
     template_name_suffix = '_update'
     success_url = reverse_lazy('book_store:index')
 
+
 class BookCreateView(LoginRequiredMixin, generic.CreateView):
     model = Book
     form_class = BookForm
     template_name_suffix = '_create'
     success_url = reverse_lazy('book_store:index')
+
 
 def user_test(request):
     username = request.user.username
@@ -38,9 +43,11 @@ def user_test(request):
     else:
         return HttpResponse("You are not logged in.")
 
+
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect("/book_store/")
+
 
 def user_login(request):    #Method not incapsulated in model because of form.save incapsulation.
     if request.POST:
@@ -60,6 +67,7 @@ def user_login(request):    #Method not incapsulated in model because of form.sa
         else:
             next = '/book_store/'
         return render(request, 'book_store/login.html', {'next' : next})
+
 
 class IndexView(generic.ListView):
     template_name = 'book_store/index.html'

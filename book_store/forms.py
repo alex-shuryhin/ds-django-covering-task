@@ -4,7 +4,6 @@ from django.forms.extras.widgets import SelectDateWidget
 from .models import Book
 
 
-
 class BookForm(forms.ModelForm):
 
     class Meta():
