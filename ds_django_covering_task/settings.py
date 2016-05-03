@@ -28,11 +28,12 @@ MEDIA_URL = '/media/'
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 
+                 'ds-django-covering-task.herokuapp.com']
 
 
 TEMPLATE_DIRS = (
