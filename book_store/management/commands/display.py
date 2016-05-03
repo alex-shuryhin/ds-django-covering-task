@@ -7,17 +7,17 @@ class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('-o', '--order',
             action='store',
-            dest = 'order',
-            default = None,
-            help = 'Possibility to order by publish date field defining ordering (asc/desc)'),
+            dest='order',
+            choices=['asc', 'desc'],
+            default=None,
+            help='Possibility to order by publish date field defining ordering (asc/desc)'),
         )
 
     def handle(self, *args, **options):
         if options['order']:
             if options['order'] == 'asc': book_list = Book.objects.order_by('publish_date')
             elif options['order'] == 'desc': book_list = Book.objects.order_by('-publish_date')
-            else: raise CommandError("Invalid ordering parameter. Try 'asc' or 'desc'.")
         else: book_list = Book.objects.all()
 
         for book in book_list:
-            self.stdout.write(" - %s" % book.title)
+            self.stdout.write(self.style.SUCCESS(" - %s" % book.title))
