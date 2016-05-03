@@ -23,8 +23,8 @@ MEDIA_URL = '/media/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# Set as environmental variable by heroku config:set SECRET_KEY="..."
+# SECRET_KEY was set as an environmental variable by heroku config:set SECRET_KEY="..."
+# in security purposes
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
