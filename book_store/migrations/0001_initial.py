@@ -19,8 +19,8 @@ class Migration(migrations.Migration):
                 ('author', models.CharField(max_length=100)),
                 ('info', models.CharField(max_length=5000)),
                 ('ISBN', models.CharField(max_length=20)),
-                ('publish_date', models.DateField(default=datetime.datetime.now)),
                 ('price', models.DecimalField(max_digits=5, decimal_places=2)),
+                ('image', models.ImageField(upload_to=b'book_store/uploads')),
             ],
             options={
             },

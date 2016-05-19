@@ -73,4 +73,4 @@ class IndexView(generic.ListView):
     template_name = 'book_store/index.html'
 
     def get_queryset(self):
-        return Book.objects.order_by('title').select_related('author')
+        return Book.objects.order_by('title')

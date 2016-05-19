@@ -5,9 +5,8 @@ from django.db import models
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
-    info = models.CharField(max_length=5000)
+    info = models.TextField()
     ISBN = models.CharField(max_length=20) #primary key?
-    publish_date = models.DateField(default=datetime.now)
     price = models.DecimalField(decimal_places=2, max_digits=5)
     image = models.ImageField(upload_to='book_store/uploads')
 

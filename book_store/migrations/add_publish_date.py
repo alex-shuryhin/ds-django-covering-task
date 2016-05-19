@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from datetime import date
 
 from django.db import models, migrations
 
@@ -11,10 +12,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='book',
-            name='image',
-            field=models.ImageField(default=b'101', upload_to=b''),
-            preserve_default=True,
-        ),
+        migrations.AddField("Book", "publish_date", models.DateField(default=date.today())),
     ]

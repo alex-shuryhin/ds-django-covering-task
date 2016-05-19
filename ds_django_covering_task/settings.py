@@ -28,7 +28,7 @@ MEDIA_URL = '/media/'
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -104,13 +104,13 @@ DATABASES['default'].update(db_from_env)
 
 LANGUAGE_CODE = 'en-us'
 
-#TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
 USE_L10N = True
 
-#USE_TZ = True
+USE_TZ = True
 
 
 LOGIN_URL = '/book_store/login/'
@@ -125,31 +125,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages"
 )
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'book_store.middleware.LoggingBooksManipulationsMiddleware',
-            # 'class': 'logging.StreamHandler',
-            #'filename': 'book_store/book_manipulations.log',
-        },
-    },
-    'loggers': {
-        'django.db.backends': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-    'formatters': {
-        'simple': {
-            'format': '%(asctime)s %(message)s'
-        },
-    },
-}
 
 import os
 from django.core.exceptions import ImproperlyConfigured
