@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth.models import User
 
 from .models import Book, RequestRecord
@@ -46,7 +46,7 @@ def user_test(request):
 
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect("/book_store/")
+    return HttpResponseRedirect(reverse('index'))
 
 
 def user_login(request):    #Method not incapsulated in model because of form.save incapsulation.
@@ -65,7 +65,7 @@ def user_login(request):    #Method not incapsulated in model because of form.sa
         if request.GET:
             next = request.GET['next']
         else:
-            next = '/book_store/'
+            next = reverse('index')
         return render(request, 'book_store/login.html', {'next' : next})
 
 
